@@ -1,0 +1,63 @@
+import { StyleSheet } from 'react-native';
+import { VERDE_ESCURO, VERDE, FUNDO, PAINEL, BORDA } from './tema';
+
+export const estilos = StyleSheet.create({
+  tagline: { color: FUNDO, fontSize: 17, fontWeight: '700', textAlign: 'center', marginTop: 20, lineHeight: 23 },
+  cartaoLogin: { backgroundColor: PAINEL, margin: 14, marginTop: 30, borderRadius: 28, padding: 22 },
+  titulo: { fontSize: 24, fontWeight: '800', color: VERDE_ESCURO },
+  campo: { flexDirection: 'row', alignItems: 'center', backgroundColor: PAINEL, borderColor: BORDA, borderWidth: 1.5, borderRadius: 12, paddingHorizontal: 14, minHeight: 52, marginBottom: 14 },
+  input: { flex: 1, fontSize: 16, paddingVertical: 12, marginLeft: 8 },
+  botao: { minHeight: 52, borderRadius: 12, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' },
+  botaoTxt: { color: '#fff', fontSize: 17, fontWeight: '600' },
+  ou: { textAlign: 'center', color: '#9AA39B', marginVertical: 12 },
+  google: { minHeight: 46, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', borderRadius: 999, borderWidth: 1.5, borderColor: VERDE_ESCURO },
+
+  cabecalho: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 16, paddingBottom: 16 },
+  cabTitulo: { color: '#fff', fontSize: 21, fontWeight: '800' },
+  avatar: { width: 38, height: 38, borderRadius: 19, backgroundColor: FUNDO, alignItems: 'center', justifyContent: 'center' },
+
+  saudacao: { fontSize: 25, fontWeight: '800', color: VERDE_ESCURO, textAlign: 'center', marginTop: 10 },
+  data: { fontSize: 15, color: VERDE, textAlign: 'center', marginTop: 4 },
+
+  saldoCard: { backgroundColor: VERDE, borderRadius: 26, padding: 18, marginBottom: 14 },
+  saldoValor: { color: '#fff', fontSize: 38, fontWeight: '800', marginVertical: 2 },
+  linhaFina: { height: 1, backgroundColor: 'rgba(255,255,255,0.35)', marginVertical: 10 },
+  col: { flex: 1, alignItems: 'center' },
+  colRotulo: { color: '#fff', fontSize: 12 },
+  colValor: { color: '#fff', fontSize: 13, fontWeight: '800' },
+
+  pilula: { flex: 1, backgroundColor: PAINEL, borderColor: BORDA, borderWidth: 1.5, borderRadius: 12, paddingVertical: 6, paddingHorizontal: 9, marginHorizontal: 4 },
+
+  painel: { backgroundColor: PAINEL, borderColor: BORDA, borderWidth: 1.5, borderRadius: 20, padding: 16, marginBottom: 14 },
+  painelTitulo: { color: VERDE_ESCURO, fontSize: 17, fontWeight: '800', marginBottom: 12 },
+
+  linhaMov: { flexDirection: 'row', alignItems: 'center', paddingVertical: 8 },
+  iconeMov: { width: 46, height: 46, borderRadius: 10, backgroundColor: FUNDO, borderColor: BORDA, borderWidth: 1.5, alignItems: 'center', justifyContent: 'center', marginRight: 14 },
+
+  atalho: { flex: 1, flexDirection: 'row', alignItems: 'center', backgroundColor: PAINEL, borderColor: BORDA, borderWidth: 1.5, borderRadius: 14, padding: 14 },
+  atalhoTxt: { color: VERDE_ESCURO, fontWeight: '700', marginLeft: 10 },
+
+  chip: { paddingHorizontal: 14, paddingVertical: 8, borderRadius: 99, borderWidth: 1.5, borderColor: BORDA, backgroundColor: PAINEL, marginRight: 8 },
+
+  faixa: { backgroundColor: VERDE, borderRadius: 22, padding: 18, marginBottom: 14 },
+  contaItem: { flexDirection: 'row', alignItems: 'center', backgroundColor: PAINEL, borderColor: BORDA, borderWidth: 1.5, borderRadius: 20, padding: 14, marginBottom: 10 },
+
+  seg: { flexDirection: 'row', backgroundColor: PAINEL, borderColor: BORDA, borderWidth: 1.5, borderRadius: 12, padding: 4, marginBottom: 14 },
+  segItem: { flex: 1, alignItems: 'center', justifyContent: 'center', minHeight: 42, borderRadius: 9 },
+  segTxt: { fontWeight: '700', color: VERDE_ESCURO },
+
+  botaoPequeno: { alignSelf: 'flex-end', backgroundColor: VERDE, paddingHorizontal: 14, paddingVertical: 10, borderRadius: 12 },
+  trilho: { height: 10, borderRadius: 99, backgroundColor: '#DDE5DD', overflow: 'hidden' },
+
+  vazioTitulo: { color: VERDE_ESCURO, fontSize: 17, fontWeight: '700', textAlign: 'center' },
+  vazioTxt: { color: '#6B7A6F', textAlign: 'center', marginTop: 6 },
+
+  barraPos: { position: 'absolute', left: 8, right: 8, bottom: 20 },
+  barra: { flexDirection: 'row', borderRadius: 30, paddingVertical: 6, paddingHorizontal: 4, elevation: 6, shadowColor: VERDE_ESCURO, shadowOpacity: 0.25, shadowRadius: 10, shadowOffset: { width: 0, height: 6 } },
+  abaItem: { flex: 1, alignItems: 'center', paddingVertical: 6, borderRadius: 22 },
+  abaTxt: { color: '#fff', fontSize: 10, fontWeight: '600', marginTop: 2 },
+  lixo: { padding: 6, marginLeft: 6 },
+  acoes: { flexDirection: 'row', alignItems: 'center', marginTop: 12 },
+  linhaChips: { flexDirection: 'row', flexWrap: 'wrap', marginBottom: 14 },
+  rotulo: { color: VERDE_ESCURO, fontWeight: '700', marginBottom: 6 },
+});
