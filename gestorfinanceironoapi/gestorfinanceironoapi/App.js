@@ -1,52 +1,107 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, StatusBar } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { Ionicons } from '@expo/vector-icons';
-import * as SQLite from 'expo-sqlite';
-import { VERDE_ESCURO, VERDE, VERDE_CLARO, FUNDO } from './styles/tema';
-import { estilos } from './styles/styles';
-import { Logo, TOPO } from './componentes';
+import React, { useState, useEffect } from "react";
+import {View, Text, ScrollView, TouchableOpacity,  StatusBar,
+} from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { Ionicons } from "@expo/vector-icons";
+import * as SQLite from "expo-sqlite";
+import { VERDE_ESCURO, VERDE, VERDE_CLARO, FUNDO } from "./styles/tema";
+import { estilos } from "./styles/styles";
+import { Logo, TOPO } from "./componentes";
 
-import Login from './screens/Login';
-import Inicio from './screens/Inicio';
-import Movimentos from './screens/Movimentos';
-import Contas from './screens/Contas';
-import Categorias from './screens/Categorias';
-import Metas from './screens/Metas';
+import Login from "./screens/Login";
+import Inicio from "./screens/Inicio";
+import Movimentos from "./screens/Movimentos";
+import Contas from "./screens/Contas";
+import Categorias from "./screens/Categorias";
+import Metas from "./screens/Metas";
+import EfeitoDomino from "./screens/EfeitoDomino";
+import Relatorios from "./screens/Relatorios";
 
 const ABAS = [
-  { chave: 'inicio', nome: 'Geral', icone: 'home', tela: Inicio },
-  { chave: 'movimentos', nome: 'Movimentos', icone: 'swap-vertical', tela: Movimentos },
-  { chave: 'contas', nome: 'Contas', icone: 'wallet', tela: Contas },
-  { chave: 'categorias', nome: 'Categorias', icone: 'pricetag', tela: Categorias },
-  { chave: 'metas', nome: 'Metas', icone: 'checkmark-circle', tela: Metas },
+  { chave: "inicio", nome: "Geral", icone: "home", tela: Inicio },
+  {
+    chave: "movimentos",
+    nome: "Movimentos",
+    icone: "swap-vertical",
+    tela: Movimentos,
+  },
+  { chave: "contas", nome: "Contas", icone: "wallet", tela: Contas },
+  {
+    chave: "categorias",
+    nome: "Categorias",
+    icone: "pricetag",
+    tela: Categorias,
+  },
+  { chave: "metas", nome: "Metas", icone: "checkmark-circle", tela: Metas },
+  {
+    chave: "efeito",
+    nome: "Efeito Dominó",
+    tela: EfeitoDomino,
+    escondida: true,
+  },
+  {
+    chave: "relatorios",
+    nome: "Relatórios",
+    tela: Relatorios,
+    escondida: true,
+  },
 ];
 
 function Principal({ db, usuario, sair }) {
-  const [abaAtual, setAbaAtual] = useState('inicio');
+  const [abaAtual, setAbaAtual] = useState("inicio");
   const aba = ABAS.find((item) => item.chave === abaAtual);
   const Tela = aba.tela;
 
   return (
     <View style={{ flex: 1, backgroundColor: FUNDO }}>
-      <LinearGradient colors={[VERDE_ESCURO, VERDE, VERDE_CLARO]} start={{ x: 0, y: 0.1 }} end={{ x: 1, y: 0.9 }} style={[estilos.cabecalho, { paddingTop: TOPO + 10 }]}>
+      <LinearGradient
+        colors={[VERDE_ESCURO, VERDE, VERDE_CLARO]}
+        start={{ x: 0, y: 0.1 }}
+        end={{ x: 1, y: 0.9 }}
+        style={[estilos.cabecalho, { paddingTop: TOPO + 10 }]}
+      >
         <View style={{ width: 40 }} />
-        {abaAtual === 'inicio' ? <Logo tamanho={34} /> : <Text style={estilos.cabTitulo}>{aba.nome}</Text>}
+        {abaAtual === "inicio" ? (
+          <Logo tamanho={34} />
+        ) : (
+          <Text style={estilos.cabTitulo}>{aba.nome}</Text>
+        )}
         <TouchableOpacity style={estilos.avatar} onPress={sair}>
-          <Text style={{ color: VERDE_ESCURO, fontWeight: '800' }}>{usuario.nm_usuario.charAt(0).toUpperCase()}</Text>
+          <Text style={{ color: VERDE_ESCURO, fontWeight: "800" }}>
+            {usuario.nm_usuario.charAt(0).toUpperCase()}
+          </Text>
         </TouchableOpacity>
       </LinearGradient>
 
-      <ScrollView contentContainerStyle={{ padding: 18, paddingBottom: 120 }} keyboardShouldPersistTaps="handled">
+      <ScrollView
+        contentContainerStyle={{ padding: 18, paddingBottom: 120 }}
+        keyboardShouldPersistTaps="handled"
+      >
         <Tela db={db} usuario={usuario} irPara={setAbaAtual} />
       </ScrollView>
 
       <View style={estilos.barraPos}>
-        <LinearGradient colors={[VERDE_ESCURO, VERDE, VERDE_CLARO]} start={{ x: 0, y: 0.5 }} end={{ x: 1, y: 0.5 }} style={estilos.barra}>
-          {ABAS.map((item) => (
-            <TouchableOpacity key={item.chave} onPress={() => setAbaAtual(item.chave)} style={[estilos.abaItem, item.chave === abaAtual && { backgroundColor: 'rgba(255,255,255,0.22)' }]}>
+        <LinearGradient
+          colors={[VERDE_ESCURO, VERDE, VERDE_CLARO]}
+          start={{ x: 0, y: 0.5 }}
+          end={{ x: 1, y: 0.5 }}
+          style={estilos.barra}
+        >
+          {ABAS.filter((item) => !item.escondida).map((item) => (
+            <TouchableOpacity
+              key={item.chave}
+              onPress={() => setAbaAtual(item.chave)}
+              style={[
+                estilos.abaItem,
+                item.chave === abaAtual && {
+                  backgroundColor: "rgba(255,255,255,0.22)",
+                },
+              ]}
+            >
               <Ionicons name={item.icone} size={19} color="#fff" />
-              <Text style={estilos.abaTxt} numberOfLines={1}>{item.nome}</Text>
+              <Text style={estilos.abaTxt} numberOfLines={1}>
+                {item.nome}
+              </Text>
             </TouchableOpacity>
           ))}
         </LinearGradient>
@@ -61,7 +116,7 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
-      const database = await SQLite.openDatabaseAsync('livre.db');
+      const database = await SQLite.openDatabaseAsync("livre.db");
 
       await database.execAsync(`
         CREATE TABLE IF NOT EXISTS usuarios (
